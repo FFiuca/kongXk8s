@@ -1,0 +1,5 @@
+_format_version: "1.1"
+rbac_users:
+- name: kong-cp
+  user_token: caco123
+  role: super-admin

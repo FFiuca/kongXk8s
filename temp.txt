@@ -1,0 +1,17 @@
+NAME: kong-cp
+LAST DEPLOYED: Thu Jan  9 11:39:45 2025
+NAMESPACE: kong
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+To connect to Kong, please execute the following commands:
+
+HOST=$(kubectl get svc --namespace kong kong-cp-kong-proxy -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+PORT=$(kubectl get svc --namespace kong kong-cp-kong-proxy -o jsonpath='{.spec.ports[0].port}')
+export PROXY_IP=${HOST}:${PORT}
+curl $PROXY_IP
+
+Once installed, please follow along the getting started guide to start using
+Kong: https://docs.konghq.com/kubernetes-ingress-controller/latest/guides/getting-started/
+
