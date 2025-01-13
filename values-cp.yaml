@@ -1,7 +1,7 @@
 # Do not use Kong Ingress Controller
 ingressController:
  enabled: false
- resources: {}
+#  resources: {}
   
 image:
  repository: kong
@@ -30,8 +30,8 @@ env:
 # kong manager
 #  admin_gui_url: http://localhost:8882
 #  admin_gui_api_url: http://localhost:8888
-#  admin_gui_url: http://35.189.23.236:8002
-#  admin_gui_api_url: http://35.189.23.236:8001
+#  admin_gui_url: http://34.40.156.249:8002
+#  admin_gui_api_url: http://34.40.156.249:8001
  admin_gui_url: http://manager.cacococo.shop:8002 # must same with ingress and loadbalancer setting to avoid CORS
  admin_gui_api_url: http://manager.cacococo.shop:8001
  # Change the secret and set cookie_secure to true if using a HTTPS endpoint
@@ -54,18 +54,39 @@ admin:
  enabled: true
  http:
    enabled: true
- resources: {}
+#  resources: {}
+#  resources:
+#     requests:
+#       cpu: "500m"    # Request 0.5 CPU
+#       memory: "1Gi"   # Request 1 Gi of memory
+#     limits:
+#       cpu: "1"        # Limit to 1 CPU
+#       memory: "2Gi"   # Limit to 2 Gi of memory
   
 # Clustering endpoints are required in hybrid mode
 cluster:
  enabled: true
  tls:
    enabled: true
- resources: {}
+#  resources: {}
+#  resources:
+#     requests:
+#       cpu: "500m"    # Request 0.5 CPU
+#       memory: "1Gi"   # Request 1 Gi of memory
+#     limits:
+#       cpu: "1"        # Limit to 1 CPU
+#       memory: "2Gi"   # Limit to 2 Gi of memory
   
 clustertelemetry:
  enabled: true
- resources: {}
+#  resources: {}
+#  resources:
+#     requests:
+#       cpu: "100m"    # Request 0.1 CPU
+#       memory: "100Mi" # Request 100 Mi of memory
+#     limits:
+#       cpu: "200m"    # Limit to 0.2 CPU
+#       memory: "200Mi" # Limit to 200 Mi of memory
  tls:
    enabled: true
   
@@ -75,7 +96,14 @@ clustertelemetry:
 
 manager:
   enabled: true
-  resources: {}
+  # resources: {}
+  # resources:
+  #   requests:
+  #     cpu: "500m"    # Request 0.5 CPU
+  #     memory: "1Gi"   # Request 1 Gi of memory
+  #   limits:
+  #     cpu: "1"        # Limit to 1 CPU
+  #     memory: "2Gi"   # Limit to 2 Gi of memory
   http:
     # Enable plaintext HTTP listen for Kong Manager
     enabled: true
@@ -111,7 +139,14 @@ manager:
 portal:
   # Enable creating a Kubernetes service for the Developer Portal
   enabled: true
-  resources: {}
+  # resources: {}
+  # resources:
+  #   requests:
+  #     cpu: "500m"    # Request 0.5 CPU
+  #     memory: "1Gi"   # Request 1 Gi of memory
+  #   limits:
+  #     cpu: "1"        # Limit to 1 CPU
+  #     memory: "2Gi"   # Limit to 2 Gi of memory
   type: NodePort
   loadBalancerClass: gce
   # To specify annotations or labels for the Portal service, add them to the respective
@@ -152,20 +187,17 @@ proxy:
 # if this option is enabled
 postgresql:
   enabled: true
-  resources: {}
+  # resources: {}
+  # resources:
+  #     requests:
+  #       cpu: "200m"    # Request 0.2 CPU for PostgreSQL
+  #       memory: "1Gi"   # Request 1 Gi of memory for PostgreSQL
+  #     limits:
+  #       cpu: "500m"    # Limit PostgreSQL to 0.5 CPU
+  #       memory: "2Gi"   # Limit PostgreSQL to 2 Gi of memory
   auth:
     password: demo123
 
-controller:
- resources: {}
- ingressController:
-   image:
-     repository: kong/kubernetes-ingress-controller
-     tag: "3.4.1"
-
-gateway:
- env:
-   router_flavor: expressions
 
 
 
