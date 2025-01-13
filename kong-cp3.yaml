@@ -26,7 +26,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
 type: Opaque
 data:
-  postgres-password: "SVZGT0JpSEMyeg=="
+  postgres-password: "UnN6VVN0VjlrTw=="
   password: "ZGVtbzEyMw=="
   # We don't auto-generate LDAP password when it's not provided as we do for other passwords
 ---
@@ -332,6 +332,8 @@ spec:
           runAsUser: 1000
           seccompProfile:
             type: RuntimeDefault
+        resources:
+          {}
         command:
         - "rm"
         - "-vrf"
@@ -349,7 +351,7 @@ spec:
         - name: KONG_ADMIN_GUI_ACCESS_LOG
           value: "/dev/stdout"
         - name: KONG_ADMIN_GUI_API_URL
-          value: "http://manager.cacococo.shop:8001"
+          value: "http://34.40.156.249:8001"
         - name: KONG_ADMIN_GUI_AUTH
           value: "basic-auth"
         - name: KONG_ADMIN_GUI_ERROR_LOG
@@ -357,9 +359,9 @@ spec:
         - name: KONG_ADMIN_GUI_LISTEN
           value: "0.0.0.0:8002, [::]:8002"
         - name: KONG_ADMIN_GUI_SESSION_CONF
-          value: "{\"secret\":\"secret\",\"storage\":\"kong\",\"cookie_secure\":false}"
+          value: "{\"secret\":\"c2VjcmV0Cg==\",\"storage\":\"kong\",\"cookie_secure\":false}"
         - name: KONG_ADMIN_GUI_URL
-          value: "http://manager.cacococo.shop:8002"
+          value: "http://34.40.156.249:8002"
         - name: KONG_ADMIN_LISTEN
           value: "0.0.0.0:8001, [::]:8001, 0.0.0.0:8444 http2 ssl, [::]:8444 http2 ssl"
         - name: KONG_CLUSTER_CERT
@@ -466,7 +468,7 @@ spec:
         - name: KONG_ADMIN_GUI_ACCESS_LOG
           value: "/dev/stdout"
         - name: KONG_ADMIN_GUI_API_URL
-          value: "http://manager.cacococo.shop:8001"
+          value: "http://34.40.156.249:8001"
         - name: KONG_ADMIN_GUI_AUTH
           value: "basic-auth"
         - name: KONG_ADMIN_GUI_ERROR_LOG
@@ -474,9 +476,9 @@ spec:
         - name: KONG_ADMIN_GUI_LISTEN
           value: "0.0.0.0:8002, [::]:8002"
         - name: KONG_ADMIN_GUI_SESSION_CONF
-          value: "{\"secret\":\"secret\",\"storage\":\"kong\",\"cookie_secure\":false}"
+          value: "{\"secret\":\"c2VjcmV0Cg==\",\"storage\":\"kong\",\"cookie_secure\":false}"
         - name: KONG_ADMIN_GUI_URL
-          value: "http://manager.cacococo.shop:8002"
+          value: "http://34.40.156.249:8002"
         - name: KONG_ADMIN_LISTEN
           value: "0.0.0.0:8001, [::]:8001, 0.0.0.0:8444 http2 ssl, [::]:8444 http2 ssl"
         - name: KONG_CLUSTER_CERT
@@ -589,7 +591,7 @@ spec:
         - name: KONG_ADMIN_GUI_ACCESS_LOG
           value: "/dev/stdout"
         - name: KONG_ADMIN_GUI_API_URL
-          value: "http://manager.cacococo.shop:8001"
+          value: "http://34.40.156.249:8001"
         - name: KONG_ADMIN_GUI_AUTH
           value: "basic-auth"
         - name: KONG_ADMIN_GUI_ERROR_LOG
@@ -597,9 +599,9 @@ spec:
         - name: KONG_ADMIN_GUI_LISTEN
           value: "0.0.0.0:8002, [::]:8002"
         - name: KONG_ADMIN_GUI_SESSION_CONF
-          value: "{\"secret\":\"secret\",\"storage\":\"kong\",\"cookie_secure\":false}"
+          value: "{\"secret\":\"c2VjcmV0Cg==\",\"storage\":\"kong\",\"cookie_secure\":false}"
         - name: KONG_ADMIN_GUI_URL
-          value: "http://manager.cacococo.shop:8002"
+          value: "http://34.40.156.249:8002"
         - name: KONG_ADMIN_LISTEN
           value: "0.0.0.0:8001, [::]:8001, 0.0.0.0:8444 http2 ssl, [::]:8444 http2 ssl"
         - name: KONG_CLUSTER_CERT
@@ -996,7 +998,7 @@ spec:
         - name: KONG_ADMIN_GUI_ACCESS_LOG
           value: "/dev/stdout"
         - name: KONG_ADMIN_GUI_API_URL
-          value: "http://manager.cacococo.shop:8001"
+          value: "http://34.40.156.249:8001"
         - name: KONG_ADMIN_GUI_AUTH
           value: "basic-auth"
         - name: KONG_ADMIN_GUI_ERROR_LOG
@@ -1004,9 +1006,9 @@ spec:
         - name: KONG_ADMIN_GUI_LISTEN
           value: "0.0.0.0:8002, [::]:8002"
         - name: KONG_ADMIN_GUI_SESSION_CONF
-          value: "{\"secret\":\"secret\",\"storage\":\"kong\",\"cookie_secure\":false}"
+          value: "{\"secret\":\"c2VjcmV0Cg==\",\"storage\":\"kong\",\"cookie_secure\":false}"
         - name: KONG_ADMIN_GUI_URL
-          value: "http://manager.cacococo.shop:8002"
+          value: "http://34.40.156.249:8002"
         - name: KONG_ADMIN_LISTEN
           value: "0.0.0.0:8001, [::]:8001, 0.0.0.0:8444 http2 ssl, [::]:8444 http2 ssl"
         - name: KONG_CLUSTER_CERT
@@ -1115,7 +1117,7 @@ spec:
         - name: KONG_ADMIN_GUI_ACCESS_LOG
           value: "/dev/stdout"
         - name: KONG_ADMIN_GUI_API_URL
-          value: "http://manager.cacococo.shop:8001"
+          value: "http://34.40.156.249:8001"
         - name: KONG_ADMIN_GUI_AUTH
           value: "basic-auth"
         - name: KONG_ADMIN_GUI_ERROR_LOG
@@ -1123,9 +1125,9 @@ spec:
         - name: KONG_ADMIN_GUI_LISTEN
           value: "0.0.0.0:8002, [::]:8002"
         - name: KONG_ADMIN_GUI_SESSION_CONF
-          value: "{\"secret\":\"secret\",\"storage\":\"kong\",\"cookie_secure\":false}"
+          value: "{\"secret\":\"c2VjcmV0Cg==\",\"storage\":\"kong\",\"cookie_secure\":false}"
         - name: KONG_ADMIN_GUI_URL
-          value: "http://manager.cacococo.shop:8002"
+          value: "http://34.40.156.249:8002"
         - name: KONG_ADMIN_LISTEN
           value: "0.0.0.0:8001, [::]:8001, 0.0.0.0:8444 http2 ssl, [::]:8444 http2 ssl"
         - name: KONG_CLUSTER_CERT
@@ -1331,7 +1333,7 @@ spec:
         - name: KONG_ADMIN_GUI_ACCESS_LOG
           value: "/dev/stdout"
         - name: KONG_ADMIN_GUI_API_URL
-          value: "http://manager.cacococo.shop:8001"
+          value: "http://34.40.156.249:8001"
         - name: KONG_ADMIN_GUI_AUTH
           value: "basic-auth"
         - name: KONG_ADMIN_GUI_ERROR_LOG
@@ -1339,9 +1341,9 @@ spec:
         - name: KONG_ADMIN_GUI_LISTEN
           value: "0.0.0.0:8002, [::]:8002"
         - name: KONG_ADMIN_GUI_SESSION_CONF
-          value: "{\"secret\":\"secret\",\"storage\":\"kong\",\"cookie_secure\":false}"
+          value: "{\"secret\":\"c2VjcmV0Cg==\",\"storage\":\"kong\",\"cookie_secure\":false}"
         - name: KONG_ADMIN_GUI_URL
-          value: "http://manager.cacococo.shop:8002"
+          value: "http://34.40.156.249:8002"
         - name: KONG_ADMIN_LISTEN
           value: "0.0.0.0:8001, [::]:8001, 0.0.0.0:8444 http2 ssl, [::]:8444 http2 ssl"
         - name: KONG_CLUSTER_CERT
@@ -1450,7 +1452,7 @@ spec:
         - name: KONG_ADMIN_GUI_ACCESS_LOG
           value: "/dev/stdout"
         - name: KONG_ADMIN_GUI_API_URL
-          value: "http://manager.cacococo.shop:8001"
+          value: "http://34.40.156.249:8001"
         - name: KONG_ADMIN_GUI_AUTH
           value: "basic-auth"
         - name: KONG_ADMIN_GUI_ERROR_LOG
@@ -1458,9 +1460,9 @@ spec:
         - name: KONG_ADMIN_GUI_LISTEN
           value: "0.0.0.0:8002, [::]:8002"
         - name: KONG_ADMIN_GUI_SESSION_CONF
-          value: "{\"secret\":\"secret\",\"storage\":\"kong\",\"cookie_secure\":false}"
+          value: "{\"secret\":\"c2VjcmV0Cg==\",\"storage\":\"kong\",\"cookie_secure\":false}"
         - name: KONG_ADMIN_GUI_URL
-          value: "http://manager.cacococo.shop:8002"
+          value: "http://34.40.156.249:8002"
         - name: KONG_ADMIN_LISTEN
           value: "0.0.0.0:8001, [::]:8001, 0.0.0.0:8444 http2 ssl, [::]:8444 http2 ssl"
         - name: KONG_CLUSTER_CERT
@@ -1639,7 +1641,7 @@ spec:
         - name: KONG_ADMIN_GUI_ACCESS_LOG
           value: "/dev/stdout"
         - name: KONG_ADMIN_GUI_API_URL
-          value: "http://manager.cacococo.shop:8001"
+          value: "http://34.40.156.249:8001"
         - name: KONG_ADMIN_GUI_AUTH
           value: "basic-auth"
         - name: KONG_ADMIN_GUI_ERROR_LOG
@@ -1647,9 +1649,9 @@ spec:
         - name: KONG_ADMIN_GUI_LISTEN
           value: "0.0.0.0:8002, [::]:8002"
         - name: KONG_ADMIN_GUI_SESSION_CONF
-          value: "{\"secret\":\"secret\",\"storage\":\"kong\",\"cookie_secure\":false}"
+          value: "{\"secret\":\"c2VjcmV0Cg==\",\"storage\":\"kong\",\"cookie_secure\":false}"
         - name: KONG_ADMIN_GUI_URL
-          value: "http://manager.cacococo.shop:8002"
+          value: "http://34.40.156.249:8002"
         - name: KONG_ADMIN_LISTEN
           value: "0.0.0.0:8001, [::]:8001, 0.0.0.0:8444 http2 ssl, [::]:8444 http2 ssl"
         - name: KONG_CLUSTER_CERT
@@ -1758,7 +1760,7 @@ spec:
         - name: KONG_ADMIN_GUI_ACCESS_LOG
           value: "/dev/stdout"
         - name: KONG_ADMIN_GUI_API_URL
-          value: "http://manager.cacococo.shop:8001"
+          value: "http://34.40.156.249:8001"
         - name: KONG_ADMIN_GUI_AUTH
           value: "basic-auth"
         - name: KONG_ADMIN_GUI_ERROR_LOG
@@ -1766,9 +1768,9 @@ spec:
         - name: KONG_ADMIN_GUI_LISTEN
           value: "0.0.0.0:8002, [::]:8002"
         - name: KONG_ADMIN_GUI_SESSION_CONF
-          value: "{\"secret\":\"secret\",\"storage\":\"kong\",\"cookie_secure\":false}"
+          value: "{\"secret\":\"c2VjcmV0Cg==\",\"storage\":\"kong\",\"cookie_secure\":false}"
         - name: KONG_ADMIN_GUI_URL
-          value: "http://manager.cacococo.shop:8002"
+          value: "http://34.40.156.249:8002"
         - name: KONG_ADMIN_LISTEN
           value: "0.0.0.0:8001, [::]:8001, 0.0.0.0:8444 http2 ssl, [::]:8444 http2 ssl"
         - name: KONG_CLUSTER_CERT

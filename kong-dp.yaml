@@ -3,12 +3,12 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: release-name-kong
+  name: kong-dp-kong
   namespace: kong
   labels:
     app.kubernetes.io/name: kong
     helm.sh/chart: kong-2.46.0
-    app.kubernetes.io/instance: "release-name"
+    app.kubernetes.io/instance: "kong-dp"
     app.kubernetes.io/managed-by: "Helm"
     
     app.kubernetes.io/version: "3.9"
@@ -17,12 +17,12 @@ metadata:
 apiVersion: v1
 kind: Service
 metadata:
-  name: release-name-kong-portalapi
+  name: kong-dp-kong-portalapi
   namespace: kong
   labels:
     app.kubernetes.io/name: kong
     helm.sh/chart: kong-2.46.0
-    app.kubernetes.io/instance: "release-name"
+    app.kubernetes.io/instance: "kong-dp"
     app.kubernetes.io/managed-by: "Helm"
     
     app.kubernetes.io/version: "3.9"
@@ -40,18 +40,18 @@ spec:
   selector:
     app.kubernetes.io/name: kong
     app.kubernetes.io/component: app
-    app.kubernetes.io/instance: "release-name"
+    app.kubernetes.io/instance: "kong-dp"
 ---
 # Source: kong/templates/service-kong-portal.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: release-name-kong-portal
+  name: kong-dp-kong-portal
   namespace: kong
   labels:
     app.kubernetes.io/name: kong
     helm.sh/chart: kong-2.46.0
-    app.kubernetes.io/instance: "release-name"
+    app.kubernetes.io/instance: "kong-dp"
     app.kubernetes.io/managed-by: "Helm"
     
     app.kubernetes.io/version: "3.9"
@@ -69,24 +69,34 @@ spec:
   selector:
     app.kubernetes.io/name: kong
     app.kubernetes.io/component: app
-    app.kubernetes.io/instance: "release-name"
+    app.kubernetes.io/instance: "kong-dp"
 ---
 # Source: kong/templates/service-kong-proxy.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: release-name-kong-proxy
+  name: kong-dp-kong-proxy
   namespace: kong
   labels:
     app.kubernetes.io/name: kong
     helm.sh/chart: kong-2.46.0
-    app.kubernetes.io/instance: "release-name"
+    app.kubernetes.io/instance: "kong-dp"
     app.kubernetes.io/managed-by: "Helm"
     
     app.kubernetes.io/version: "3.9"
     enable-metrics: "true"
 spec:
   type: LoadBalancer
+  loadBalancerSourceRanges:
+  - 27.50.64.0/18
+  - 39.208.0.0/12
+  - 103.16.128.0/22
+  - 103.20.124.0/22
+  - 103.76.16.0/22
+  - 118.97.0.0/16
+  - 139.255.0.0/16
+  - 180.214.232.0/21
+  - 182.253.0.0/16
   ports:
   - name: kong-proxy
     port: 80
@@ -99,18 +109,18 @@ spec:
   selector:
     app.kubernetes.io/name: kong
     app.kubernetes.io/component: app
-    app.kubernetes.io/instance: "release-name"
+    app.kubernetes.io/instance: "kong-dp"
 ---
 # Source: kong/templates/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: release-name-kong
+  name: kong-dp-kong
   namespace:  kong
   labels:
     app.kubernetes.io/name: kong
     helm.sh/chart: kong-2.46.0
-    app.kubernetes.io/instance: "release-name"
+    app.kubernetes.io/instance: "kong-dp"
     app.kubernetes.io/managed-by: "Helm"
     
     app.kubernetes.io/version: "3.9"
@@ -122,27 +132,27 @@ spec:
     matchLabels:
       app.kubernetes.io/name: kong
       app.kubernetes.io/component: app
-      app.kubernetes.io/instance: "release-name"
+      app.kubernetes.io/instance: "kong-dp"
 
   template:
     metadata:
       annotations:
-        kuma.io/service-account-token-volume: release-name-kong-token
+        kuma.io/service-account-token-volume: kong-dp-kong-token
         kuma.io/gateway: "enabled"
         traffic.sidecar.istio.io/includeInboundPorts: ""
       labels:
         app.kubernetes.io/name: kong
         helm.sh/chart: kong-2.46.0
-        app.kubernetes.io/instance: "release-name"
+        app.kubernetes.io/instance: "kong-dp"
         app.kubernetes.io/managed-by: "Helm"
         
         app.kubernetes.io/version: "3.9"
         app.kubernetes.io/component: app
-        app: release-name-kong
+        app: kong-dp-kong
         
         version: "3.9"
     spec:
-      serviceAccountName: release-name-kong
+      serviceAccountName: kong-dp-kong
       automountServiceAccountToken: false
       
       initContainers:
@@ -245,9 +255,9 @@ spec:
           value: "off"
         
         volumeMounts:
-        - name: release-name-kong-prefix-dir
+        - name: kong-dp-kong-prefix-dir
           mountPath: /kong_prefix/
-        - name: release-name-kong-tmp
+        - name: kong-dp-kong-tmp
           mountPath: /tmp
         - name:  kong-cluster-cert
           mountPath: /etc/secrets/kong-cluster-cert
@@ -376,9 +386,9 @@ spec:
           containerPort: 8447
           protocol: TCP
         volumeMounts:
-          - name: release-name-kong-prefix-dir
+          - name: kong-dp-kong-prefix-dir
             mountPath: /kong_prefix/
-          - name: release-name-kong-tmp
+          - name: kong-dp-kong-tmp
             mountPath: /tmp
           - name:  kong-cluster-cert
             mountPath: /etc/secrets/kong-cluster-cert
@@ -409,13 +419,13 @@ spec:
         {}
       terminationGracePeriodSeconds: 30
       volumes:
-        - name: release-name-kong-prefix-dir
+        - name: kong-dp-kong-prefix-dir
           emptyDir:
             sizeLimit: 256Mi
-        - name: release-name-kong-tmp
+        - name: kong-dp-kong-tmp
           emptyDir:
             sizeLimit: 1Gi
-        - name: release-name-kong-token
+        - name: kong-dp-kong-token
           projected:
             sources:
             - serviceAccountToken:

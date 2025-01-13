@@ -13,6 +13,16 @@ metadata:
     enable-metrics: "true"
 spec:
   type: LoadBalancer
+  loadBalancerSourceRanges:
+    - 27.50.64.0/18
+    - 39.208.0.0/12
+    - 103.16.128.0/22
+    - 103.20.124.0/22
+    - 103.76.16.0/22
+    - 118.97.0.0/16
+    - 139.255.0.0/16
+    - 180.214.232.0/21
+    - 182.253.0.0/16
   ports:
   - name: default
     port: 80
@@ -20,7 +30,7 @@ spec:
     protocol: TCP
   - name: kong-manager
     port: 8002
-    targetPort: 80
+    targetPort: 8002
     protocol: TCP
   - name: kong-api
     port: 8001

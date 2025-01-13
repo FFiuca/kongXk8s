@@ -28,14 +28,14 @@ env:
  pg_ssl: "on"
 
 # kong manager
-#  admin_gui_url: http://localhost:8882
-#  admin_gui_api_url: http://localhost:8888
-#  admin_gui_url: http://34.40.156.249:8002
-#  admin_gui_api_url: http://34.40.156.249:8001
- admin_gui_url: http://manager.cacococo.shop:8002 # must same with ingress and loadbalancer setting to avoid CORS
- admin_gui_api_url: http://manager.cacococo.shop:8001
+#  admin_gui_url: http://34.40.154.31/manager-gui
+#  admin_gui_api_url: http://34.40.154.31/manager-api
+ admin_gui_url: http://34.40.156.249:8002
+ admin_gui_api_url: http://34.40.156.249:8001
+#  admin_gui_url: http://manager.cacococo.shop:8002 # must same with ingress and loadbalancer setting to avoid CORS
+#  admin_gui_api_url: http://manager.cacococo.shop:8001
  # Change the secret and set cookie_secure to true if using a HTTPS endpoint
- admin_gui_session_conf: '{"secret":"secret","storage":"kong","cookie_secure":false}'
+ admin_gui_session_conf: '{"secret":"c2VjcmV0Cg==","storage":"kong","cookie_secure":false}'
   
  # Kong Manager password
  password: caco123
@@ -68,6 +68,8 @@ cluster:
  enabled: true
  tls:
    enabled: true
+   servicePort: 8005
+   containerPort: 8005
 #  resources: {}
 #  resources:
 #     requests:
