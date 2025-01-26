@@ -1,8 +1,16 @@
 gcloud config set account mis.stf17@gmail.com
 gcloud config configurations list
+gcloud config list project
 gcloud config list
 gcloud info
 gcloud container clusters get-credentials caco-cluster1 --region=australia-southeast1
+
+
+# oneemployee
+gcloud config set project lautan-luas-hr-dept
+gcloud config set compute/zone asia-southeast2-a
+gcloud config set account ci-cd-one-employee@lautan-luas-hr-dept.iam.gserviceaccount.com
+gcloud container clusters get-credentials hr-dept-cluster-1 --zone=asia-southeast2-a --project=lautan-luas-hr-dept
 
 
 helm list -n kong

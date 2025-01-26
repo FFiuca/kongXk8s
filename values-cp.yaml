@@ -10,6 +10,8 @@ image:
 # Mount the secret created earlier
 secretVolumes:
  - kong-cluster-cert
+
+# replicaCount: 0
   
 env:
  # This is a control_plane node

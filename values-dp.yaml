@@ -9,6 +9,34 @@ image:
 # Mount the secret created earlier
 secretVolumes:
   - kong-cluster-cert
+
+# podLabels: {}
+
+# Kong pod count.
+# It has no effect when autoscaling.enabled is set to true
+replicaCount: 2
+
+# Annotations to be added to Kong deployment
+deploymentAnnotations: {}
+
+# Enable autoscaling using HorizontalPodAutoscaler
+# When configuring an HPA, you must set resource requests on all containers via
+# "resources" and, if using the controller, "ingressController.resources" in values.yaml
+autoscaling:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 5
+  behavior: {}
+  ## targetCPUUtilizationPercentage only used if the cluster doesn't support autoscaling/v2 or autoscaling/v2beta
+  targetCPUUtilizationPercentage:
+  ## Otherwise for clusters that do support autoscaling/v2 or autoscaling/v2beta, use metrics
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 80
    
 env:
   # data_plane nodes do not have a database
@@ -32,17 +60,17 @@ enterprise:
 # The data plane handles proxy traffic only
 proxy:
   enabled: true
-  loadBalancerSourceRanges:
-    - 27.50.64.0/18
-    - 39.208.0.0/12
-    - 103.16.128.0/22
-    - 103.20.124.0/22
-    - 103.76.16.0/22
-    - 118.97.0.0/16
-    - 139.255.0.0/16
-    - 180.214.232.0/21
-    - 182.253.0.0/16
-    - 180.247.0.0/16
+  # loadBalancerSourceRanges:
+  #   - 27.50.64.0/18
+  #   - 39.208.0.0/12
+  #   - 103.16.128.0/22
+  #   - 103.20.124.0/22
+  #   - 103.76.16.0/22
+  #   - 118.97.0.0/16
+  #   - 139.255.0.0/16
+  #   - 180.214.232.0/21
+  #   - 182.253.0.0/16
+  #   - 180.247.0.0/16
    
 # These roles are served by the kong-cp deployment
 admin:
